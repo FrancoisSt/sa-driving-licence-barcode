@@ -1,0 +1,61 @@
+{
+  "about": "Hashes for the six public card vectors in DanieLeeuwner/Reply.Net.SADL (MIT) at commit 292402a9d437fbb44568dd5076eb50cc86040245, file Reply.Net.SADL/Reply.Net.SADL.Tests/UnitTest1.cs. index is the order of the hex constants in that file. raw_sha256 identifies the input; payload_sha256 is the 684 bytes after decryption; photo_sha256 is section 3 including its WI header; portrait_sha256 is the 50,000 upright greyscale samples (row by row, top-left first). Their expected field values are the Assert.AreEqual lines in the same file.",
+  "source": "https://github.com/DanieLeeuwner/Reply.Net.SADL",
+  "commit": "292402a9d437fbb44568dd5076eb50cc86040245",
+  "cases": [
+    {
+      "index": 1,
+      "version": 2,
+      "raw_sha256": "d8a6a7a62083cac300fb4ad9ca33c32f2377cdaa14ca3ac6cf547ea2d71e2a5c",
+      "payload_sha256": "ed15239ebd4dcb55725a9e1750ddfa3b8ca789fc46027d964899b34b573d7baa",
+      "photo_length": 593,
+      "photo_sha256": "69bada55afb4a6c9f1e124e5e316355deb65d6fccd38bccd202eb9ec6a946fa7",
+      "portrait_sha256": "d631ad43a34a5acb4e1a39add2c001387d6ed1cd22bf432f15b8c4844ed8fcfd"
+    },
+    {
+      "index": 2,
+      "version": 2,
+      "raw_sha256": "114a3f4657a6de06e03ae8b0e9b7b7c085a4a728e56db7a8c19578aa65e7db60",
+      "payload_sha256": "698f0cb6207ec8eb32ad0c452ddaa51183c4bfb36013479c3f643233b93f33f7",
+      "photo_length": 602,
+      "photo_sha256": "b2b3916f55158743f7794f7b7ac5f458d7adff2d7c280191b401aed8e651e7e7",
+      "portrait_sha256": "b77583aca8fad48ec781c1752aad0bacd73607dc55a9d4ba921bed070f71884d"
+    },
+    {
+      "index": 3,
+      "version": 2,
+      "raw_sha256": "1ae33b0ff86c5a4cd0dc2e28effcfb7f68f4d25daa2040afe675bf97369072b3",
+      "payload_sha256": "6db919d4e33e578d344078f28c2387cfeeeec95c3bc8606b3ee34a90545c12a4",
+      "photo_length": 603,
+      "photo_sha256": "eaff6a3360d1a4664984cf5788a48fb21bf6d1eeb7d0febb86d16733e47e65b3",
+      "portrait_sha256": "a1b58e85bc8976fe622285ba8afb77c8933195e03b33b4864c777c55c123fa1e"
+    },
+    {
+      "index": 4,
+      "version": 2,
+      "raw_sha256": "b9d77ca563907a62a073fe14b6dc8eb1441363721e7830ccde623ee2ae52bb96",
+      "payload_sha256": "ae2f40aff593bf3f831d232a8ea5153607132def34037384e335340253d70140",
+      "photo_length": 602,
+      "photo_sha256": "c95adaae9033258ba8b640a95a504a4904072e5adfd0633847490a641d2af86d",
+      "portrait_sha256": "e477875482a08688a15d2bc31e88ed2d80de56d9af717ecd61a3075fc801b811"
+    },
+    {
+      "index": 5,
+      "version": 2,
+      "raw_sha256": "e8cd227b3076ce3fee1e1a0d8f892c771e491c15c77b73285b1ad8b00a0f877c",
+      "payload_sha256": "e69ff86987ba9d89aba7ee9dbed41555e47e53268dc7eb3bf6b8c87ef09b6bc4",
+      "photo_length": 593,
+      "photo_sha256": "339ded9414fc5df5e2392ef2dd3ad703077e3c80b09c33064954a9354668754e",
+      "portrait_sha256": "63c9077ce4db835e54e6038060c5b989de10cf23ef969e7c61b600319c0d1ad8"
+    },
+    {
+      "index": 6,
+      "version": 2,
+      "raw_sha256": "490185c77484f55fa1f60fd8b56c0943718b87cd8c03ee85e27f19c989f42a1a",
+      "payload_sha256": "e2c77c612801ea8d9059adb2a7688eec6e95dda0138aa6b04a70271c9499eacc",
+      "photo_length": 602,
+      "photo_sha256": "32d76b156e03f747c1afcebfa4f8b0c1a2a55f657c3088d1fc64f790478256a0",
+      "portrait_sha256": "16a32853c13af21ff2cc034d18844f2982509d0c70cd495e717e1b45a755b579"
+    }
+  ]
+}

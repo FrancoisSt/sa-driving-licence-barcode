@@ -1,0 +1,64 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the public vectors
+        run: scripts/fetch-test-vectors.sh
+      - name: Build the portrait library
+        run: cargo build --release --manifest-path native/portrait/Cargo.toml
+      - name: Conformance
+        run: python3 -m unittest discover -s python -v
+      - name: Vectors are up to date
+        run: |
+          python3 scripts/make-test-vectors.py
+          python3 scripts/make-public-vector-hashes.py
+          git diff --exit-code spec/test-vectors
+
+  portrait-rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/fetch-test-vectors.sh
+      - name: Checkpoints, synthetic streams, robustness and the C API
+        run: cargo test --manifest-path native/portrait/Cargo.toml
+        env:
+          SADL_REQUIRE_VECTORS: "1"
+
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: scripts/fetch-test-vectors.sh
+      - run: dotnet test dotnet/Sadl.sln
+        env:
+          SADL_REQUIRE_VECTORS: "1"
+
+  kotlin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - run: scripts/fetch-test-vectors.sh
+      - name: Decoder tests
+        run: ./gradlew :decoder:test -Psadl.requireVectors=true
+      - name: Build the demo app
+        run: ./gradlew :demo:assembleDebug

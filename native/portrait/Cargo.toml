@@ -1,0 +1,29 @@
+[package]
+name = "sadl-portrait"
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.77"
+license = "MIT"
+repository = "https://github.com/FrancoisSt/sa-driving-licence-barcode"
+description = "Decoder for the WI portrait in South African driving-licence barcodes (spec/wi-codec.md), with a C API"
+publish = false
+
+[lib]
+name = "sadl_portrait"
+crate-type = ["rlib", "cdylib", "staticlib"]
+
+# No runtime dependencies. The dev-dependencies only read the test vectors and decrypt the public vectors.
+[dependencies]
+
+[dev-dependencies]
+serde_json = "1"
+sha2 = "0.10"
+num-bigint = "0.4"
+
+[profile.release]
+codegen-units = 1
+
+# Tests keep overflow checks and debug assertions (so a missed wrap would panic) but run optimised, for the
+# 100,000-input robustness test.
+[profile.test]
+opt-level = 2

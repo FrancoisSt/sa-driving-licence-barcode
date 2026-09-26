@@ -1,0 +1,419 @@
+{
+  "about": "Inputs: a licence in the canonical form (spec/output-format.md). Expected: the findings of spec/checks.md, in the order of its table. Blocking: licence_number_format, id_number_check_digit, id_number_birth_date, validity_order. Warnings: validity_not_five_years, unknown_code.",
+  "all_values_are_synthetic": true,
+  "cases": [
+    {
+      "name": "one-code-with-prdp",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000089",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": []
+    },
+    {
+      "name": "two-codes-no-prdp",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000001CD",
+        "licence_country": "ZA",
+        "surname": "EXAMPLE",
+        "initials": "AB",
+        "id_number": "8506155000084",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "1985-06-15",
+        "gender": "01",
+        "valid_from": "2021-07-01",
+        "valid_to": "2026-06-30",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "B",
+            "vehicle_restriction": "1",
+            "first_issue": "2005-06-15"
+          },
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2012-03-01"
+          }
+        ],
+        "driver_restrictions": "10",
+        "prdp_categories": [],
+        "prdp_expiry": null,
+        "photo_length": 594
+      },
+      "expected": []
+    },
+    {
+      "name": "four-codes",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000002FG",
+        "licence_country": "ZA",
+        "surname": "SAMPLE",
+        "initials": "CDE",
+        "id_number": "8012310000085",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "1980-12-31",
+        "gender": "02",
+        "valid_from": "2023-01-15",
+        "valid_to": "2028-01-14",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "A",
+            "vehicle_restriction": "0",
+            "first_issue": "2001-02-03"
+          },
+          {
+            "code": "B",
+            "vehicle_restriction": "0",
+            "first_issue": "2002-03-04"
+          },
+          {
+            "code": "C1",
+            "vehicle_restriction": "1",
+            "first_issue": "2003-04-05"
+          },
+          {
+            "code": "EC",
+            "vehicle_restriction": "4",
+            "first_issue": "2004-05-06"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "D",
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 571
+      },
+      "expected": []
+    },
+    {
+      "name": "leap-day-and-latin-1",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000003HJ",
+        "licence_country": "ZA",
+        "surname": "MÜLLER",
+        "initials": "T",
+        "id_number": "0402290000080",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2004-02-29",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": []
+    },
+    {
+      "name": "licence-number-format",
+      "description": "A letter among the first seven characters.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "000000A000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000089",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "licence_number_format"
+      ]
+    },
+    {
+      "name": "id-check-digit",
+      "description": "The last digit of the ID number is off by one.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000088",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "id_number_check_digit"
+      ]
+    },
+    {
+      "name": "id-birth-date",
+      "description": "A valid ID number for another birth date.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0101010000087",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "id_number_birth_date"
+      ]
+    },
+    {
+      "name": "validity-order",
+      "description": "Valid to before valid from.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000089",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2029-12-31",
+        "valid_to": "2025-01-01",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "validity_order"
+      ]
+    },
+    {
+      "name": "not-five-years",
+      "description": "Valid for five years and a day: a warning, not a rejection.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000089",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2030-01-01",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "validity_not_five_years"
+      ]
+    },
+    {
+      "name": "unknown-code",
+      "description": "A vehicle code outside the known list: a warning.",
+      "licence": {
+        "kind": "card",
+        "version": 2,
+        "licence_number": "0000000000BC",
+        "licence_country": "ZA",
+        "surname": "TESTER",
+        "initials": "T",
+        "id_number": "0001010000089",
+        "id_type": "02",
+        "id_country": "ZA",
+        "birth_date": "2000-01-01",
+        "gender": "02",
+        "valid_from": "2025-01-01",
+        "valid_to": "2029-12-31",
+        "issue_number": "01",
+        "vehicle_codes": [
+          {
+            "code": "XX",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ],
+        "driver_restrictions": "00",
+        "prdp_categories": [
+          "G",
+          "P"
+        ],
+        "prdp_expiry": "2027-01-01",
+        "photo_length": 594
+      },
+      "expected": [
+        "unknown_code"
+      ]
+    },
+    {
+      "name": "temporary-licence",
+      "description": "Only the licence number, the Luhn check (ID type 02) and the codes apply; only the keys used are given.",
+      "licence": {
+        "kind": "temporary_licence",
+        "licence_number": "0000000000BC",
+        "id_type": "02",
+        "id_number": "0001010000089",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ]
+      },
+      "expected": []
+    },
+    {
+      "name": "temporary-licence-bad-id",
+      "licence": {
+        "kind": "temporary_licence",
+        "licence_number": "0000000000BC",
+        "id_type": "02",
+        "id_number": "0001010000088",
+        "vehicle_codes": [
+          {
+            "code": "EC",
+            "vehicle_restriction": "0",
+            "first_issue": "2010-01-01"
+          }
+        ]
+      },
+      "expected": [
+        "id_number_check_digit"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;net8.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Sadl</RootNamespace>
+    <AssemblyName>Sadl</AssemblyName>
+    <!-- The WI codec relies on 32-bit wrap-around (spec/wi-codec.md section 11): never check overflow. -->
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+
+    <PackageId>Sadl</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>sa-driving-licence-barcode contributors</Authors>
+    <Description>Reads South African driving-licence barcodes: identifies, decrypts and parses the card back (RSA with the published public keys) and the paper temporary licence, runs the sanity checks, writes the canonical JSON, and decodes the 200 x 250 portrait (a managed WI codec, no native code).</Description>
+    <PackageTags>south-africa;driving-licence;pdf417;barcode;rsa</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/FrancoisSt/sa-driving-licence-barcode</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/FrancoisSt/sa-driving-licence-barcode</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Sadl.Tests" />
+  </ItemGroup>
+
+</Project>

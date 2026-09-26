@@ -1,0 +1,364 @@
+{
+  "about": "Intermediate checkpoints of the WI portrait decoder (spec/wi-codec.md, section 14) for the six public card vectors of public-vectors.json (same index). Every hash is SHA-256 of the byte string that section 14 defines. int32 arrays are little-endian, row-major, over exactly the region named. C4_coefficients is the SHA-256 of an empty string, with count 0, for a level that the skip count leaves uncoded; C5 then equals C3. C8_portrait equals portrait_sha256 in public-vectors.json. Computed from an instrumented copy of the reference codec and reproduced by an independent implementation of the spec.",
+  "spec": "spec/wi-codec.md",
+  "order": [
+    "C1_ll",
+    "C2_map",
+    "level 4: C3, C4, C5",
+    "level 3: C3, C4, C5",
+    "level 2: C3, C4, C5",
+    "level 1: C3, C4, C5",
+    "C6_sharpened",
+    "level 0: C3, C4, C5",
+    "C7_raster",
+    "C8_portrait"
+  ],
+  "checkpoints": {
+    "C1_ll": "LL band after dequantisation: 9 rows x 8 columns, int32",
+    "C2_map": "Significance map after the map stage: 250 rows x 200 columns, one byte per cell (1, 2 or 4)",
+    "C3_upsampled": "Level-l image after upsampling, before its detail coefficients: size(250,l) rows x size(200,l) columns, int32",
+    "C4_coefficients": "Level-l dequantised signed detail values in decoding order, int32 each",
+    "C5_reconstructed": "Level-l image after adding its detail coefficients: same region as C3, int32",
+    "C6_sharpened": "Level-1 image after sharpening, the input of the level-0 upsampling: 126 rows x 101 columns, int32",
+    "C7_raster": "Codec raster, 50,000 bytes in codec order (upside down)",
+    "C8_portrait": "C7 reversed (upright portrait), 50,000 bytes"
+  },
+  "cases": [
+    {
+      "index": 1,
+      "wi_length": 593,
+      "wi_sha256": "69bada55afb4a6c9f1e124e5e316355deb65d6fccd38bccd202eb9ec6a946fa7",
+      "q": 142,
+      "ll_bits": 6,
+      "skip": 0,
+      "bytes_consumed": 591,
+      "C1_ll": "f3c5fa42249b9f1302b6548a60b7f856646cc414f22c0bf4e29969496ec489d4",
+      "C2_map": "fee7c0dc23e910e414f51d6a482448fe836496f804fb1935486d32e46053b193",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "164f27a60c8a8b429bb514c1cdee1ff3a8f5b04ce2ba2cc67371864796113722",
+          "escape_bits": 5,
+          "C4_coefficient_count": 113,
+          "C4_coefficients": "a8743a8ba1bd212a2ef7ba46d856933f6188ae13a83a831a633266ea9e64dde4",
+          "C5_reconstructed": "9eb7d2d467580d7376bb765505d1b0a2b5bd492c04bfb9234beedd0c76d4865f"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "cfc37dbfc3903923837efe8267a063526e519ccc9c7146652b10d4e8b1a944c2",
+          "escape_bits": 4,
+          "C4_coefficient_count": 206,
+          "C4_coefficients": "bd75ca79820cf8994d0a22a1d5e1085d49d8361c85d712ab53a609e8da48298f",
+          "C5_reconstructed": "082a24256f346ed6a643384dadba5314eee8cd1c509a4b8ea2d7b0bea2d8a091"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "45ce218f6520453871174d760b36c5ac93de5bc631ddab804c411599666c3c15",
+          "escape_bits": 3,
+          "C4_coefficient_count": 219,
+          "C4_coefficients": "4cd089bc61beec1e728cbb8f21a24104fe157fded807184042eb5befe847c74b",
+          "C5_reconstructed": "e676c4fdb1baaf439552820abee4e65aa9bdc55e6802227b82fe3ce7e75f3087"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "c4aad2843cbf70de1f996f7ff5b21f74e8c829ef0029bc288a83a9eaca044e03",
+          "escape_bits": 2,
+          "C4_coefficient_count": 91,
+          "C4_coefficients": "a63e052f629fc2418a9aecf96b1495b4ad06b1786a398b4d9307ac1b550a6d70",
+          "C5_reconstructed": "f87c72257cab24dacc017f88270f15a548622a41486ded16587d05006bf92fa6"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "e6c4e8101e581ca183f99e9b448fc2500728d4c244d95ed258876abcfcde9c49",
+          "escape_bits": 2,
+          "C4_coefficient_count": 1,
+          "C4_coefficients": "7a7a7b729d2305eaf560e8b6669df13b8f26df43aee4f1ce323d05d8bb38a876",
+          "C5_reconstructed": "f2e7fc2688b755ccd95b8deee80454266da43d6fb163a3190aecd1d4b75267e2"
+        }
+      ],
+      "C6_sharpened": "fe282e34134a80101039ebed9afcf22fd4521f09605597b1ee551bd0dda50cab",
+      "C7_raster": "2be9340b6efb843543c01550ddb7d976a7fc7c45a7bd6b70fe5bd8c9b51d30fb",
+      "C8_portrait": "d631ad43a34a5acb4e1a39add2c001387d6ed1cd22bf432f15b8c4844ed8fcfd"
+    },
+    {
+      "index": 2,
+      "wi_length": 602,
+      "wi_sha256": "b2b3916f55158743f7794f7b7ac5f458d7adff2d7c280191b401aed8e651e7e7",
+      "q": 124,
+      "ll_bits": 6,
+      "skip": 1,
+      "bytes_consumed": 599,
+      "C1_ll": "8f9a35db669c32a18147b691b3e4c6d45aa773f0a0558167dec7efd275b706f6",
+      "C2_map": "5c0f68eae37409ab125bac4e394ebeade0ad59a6a056d75e527fdec0b96aad77",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "8d3ec16c4e16c5c9f2ad666d8b9c8c2fa41c6b7987a7870f1090316888fdf08b",
+          "escape_bits": 5,
+          "C4_coefficient_count": 121,
+          "C4_coefficients": "a0a4dc08768c1df7d245d23c8c2688d6cc98465485241395d69609e7165aeec4",
+          "C5_reconstructed": "31acbb26133e6769ce272587e1e11c273d0e9c674a0ba2b868134b8a5167a6e6"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "3044f4be1e30b20da0ff88acae26f834b269eabf3ba23926768f8f29a7c2b249",
+          "escape_bits": 4,
+          "C4_coefficient_count": 234,
+          "C4_coefficients": "ff941a9ce60dd3e79b0baccd82b77037b8c2bcebee670be3943ffc9eeafa8d93",
+          "C5_reconstructed": "62e463bcbf262d248e321c270d9fd18ad5dc4415606d580d8a04f273000f0242"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "476396a07df89e3ae6672a6f4b4bd6303411c04bd4eba951db426e6238bac779",
+          "escape_bits": 3,
+          "C4_coefficient_count": 218,
+          "C4_coefficients": "974695108932e7d47fa7ae20fefbb2f3c9c884208a5d7e74b0005aafa8e0fd97",
+          "C5_reconstructed": "90fb53be2f6e1b9b7e0a74f41c710378a1860a07e4cda8e3ca62c3586d5bfc49"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "1607a1de5c7f6d98c8de54632c29be22575225aa79e461591d44fa482bff9528",
+          "escape_bits": 2,
+          "C4_coefficient_count": 78,
+          "C4_coefficients": "a0ecc0a25f56678891f81b66821b5d4ef15e7f571512c56afc0ac00eef714186",
+          "C5_reconstructed": "fa80fd23e2fe0e7a77a87c65132e13431d38ac122a297a73ae3292826f48e144"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "f3c6ceddf12635195713a3f9020fb08b4ecbcf5fed6c3744dde028809268fcfc",
+          "escape_bits": null,
+          "C4_coefficient_count": 0,
+          "C4_coefficients": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "C5_reconstructed": "f3c6ceddf12635195713a3f9020fb08b4ecbcf5fed6c3744dde028809268fcfc"
+        }
+      ],
+      "C6_sharpened": "a5a267ef9118d41aa5e96e7cfa316d744d50713fc124795280e4f561e1f66320",
+      "C7_raster": "314080a9431f4361d864efc365cc4c9d1b1c1b7875b2f85a962a353a4fe398c3",
+      "C8_portrait": "b77583aca8fad48ec781c1752aad0bacd73607dc55a9d4ba921bed070f71884d"
+    },
+    {
+      "index": 3,
+      "wi_length": 603,
+      "wi_sha256": "eaff6a3360d1a4664984cf5788a48fb21bf6d1eeb7d0febb86d16733e47e65b3",
+      "q": 106,
+      "ll_bits": 6,
+      "skip": 1,
+      "bytes_consumed": 590,
+      "C1_ll": "4629216105abaa510c97b53df2b4ed6e839a40b0d9acf9e6f6a0aecc089a7587",
+      "C2_map": "9526486131fa7b07473949719ee03398774068623fa52c1dbd229829f8f90ca7",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "0f7cd6d0276f27ff989eddd75469ac3e737b0324758a6ce1e267e8dee1760771",
+          "escape_bits": 5,
+          "C4_coefficient_count": 139,
+          "C4_coefficients": "ecee4bd2d6ba730eafd6d67cd639bd7d6ebe083daf2a3f45a0f7b6413988fbb5",
+          "C5_reconstructed": "4ed8d8a2e50ffd1eafbb77975fb7f90b08a0a63b1f80699fd685793025c95411"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "de1772690d8708ad3715e35aa726dc216369178f42ed45749e4b6e0d4f0abe78",
+          "escape_bits": 4,
+          "C4_coefficient_count": 249,
+          "C4_coefficients": "b33eac64019c3b3fb47a5cd85e4dafb20881488775fcbc4ba67a5895c28debed",
+          "C5_reconstructed": "27c7822a6eab20c4b419846430462196898ef0e1ce5e3e678ddb3ae4f47d740f"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "3ac9536327aa204ee634b5792a110c35b350ed343db4716a6cee85eb8b8340d7",
+          "escape_bits": 3,
+          "C4_coefficient_count": 208,
+          "C4_coefficients": "ebb379105db74da929d2e839057cfc2cb3a0be50e9c05eb60c4fbe3d8d8b7643",
+          "C5_reconstructed": "5879a2780a332e3e39bf888bd8a27193f4ecfd416272b3fa0ebbf376e033d527"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "b193ceb86ddfc1830fb34e491acd29e62226a3a9c43aff2df6de7a565447ffce",
+          "escape_bits": 2,
+          "C4_coefficient_count": 60,
+          "C4_coefficients": "a73427f14c7ed76ad3f286a7d8daf93ef392a1773d3ef036fa3cc7eaf05b92f0",
+          "C5_reconstructed": "b036f756c4ea12e630fccd7b6db05f2a52b3b1f3139e764c8d36ceecaa71d8dc"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "5abdfbb657118c4139d17f2c295010a921b71e14711a100b4516a5aa2e1381cc",
+          "escape_bits": null,
+          "C4_coefficient_count": 0,
+          "C4_coefficients": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "C5_reconstructed": "5abdfbb657118c4139d17f2c295010a921b71e14711a100b4516a5aa2e1381cc"
+        }
+      ],
+      "C6_sharpened": "daeef81285e4ce460021f574628be03f576620e3764262c730f157b2cf2e122b",
+      "C7_raster": "2097f22837006dac47ea85b45e22d8673c63b2709d0de80879c55305ef7e170c",
+      "C8_portrait": "a1b58e85bc8976fe622285ba8afb77c8933195e03b33b4864c777c55c123fa1e"
+    },
+    {
+      "index": 4,
+      "wi_length": 602,
+      "wi_sha256": "c95adaae9033258ba8b640a95a504a4904072e5adfd0633847490a641d2af86d",
+      "q": 74,
+      "ll_bits": 6,
+      "skip": 1,
+      "bytes_consumed": 598,
+      "C1_ll": "d7ca3c70ea97196a5f5ca78eecafe261a90dbe334761cb62efd2535b521291fb",
+      "C2_map": "06355ad79ba5cceaf6bc0ca55dcf2e0cdb77a8701181df566dd394b0938f261e",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "7d103fd4edca8a0698c5cd8201f4648e3236a6a44d98365b86a9695b551f1ce3",
+          "escape_bits": 5,
+          "C4_coefficient_count": 110,
+          "C4_coefficients": "2a3f4e60e71082177bb37a8ce5ee29d31f8cbf2f4a23ab81f19217f57b0a9365",
+          "C5_reconstructed": "34c03ec2032d0b6dbd724a59ff59463358e080d588b89910ca3182eb9fa437b3"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "f8380d3cbfa0c4eb29c0e52b15798fb4e6b37d56cd63b400ac0c8c148710287d",
+          "escape_bits": 5,
+          "C4_coefficient_count": 207,
+          "C4_coefficients": "6750b2e2297c2a7088b27b7d25fe9d770d3e3b243a1c7bcd83e9d68354d2b436",
+          "C5_reconstructed": "2e7a96e20386f44bb67a0e8cac9507ffa7f5298f1bf46ac190c746d8b74cb105"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "0db4a87ddb5fb7b61fa78e61a5eae01d751b2fe29bfd2ddf6af2f8db2d3294af",
+          "escape_bits": 3,
+          "C4_coefficient_count": 219,
+          "C4_coefficients": "4a2474452dd4b22ab4255c15fd5f88423be32242de1f5732223d84a1b5e6b339",
+          "C5_reconstructed": "de7d7575115467c315a5c0d86a2da0cfef052822190004c90fdcbfb1cf3dd26a"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "669a419ab2b9c01d7264a5622068943ec8351362c857c701b42cd85f9d5609ed",
+          "escape_bits": 2,
+          "C4_coefficient_count": 103,
+          "C4_coefficients": "d08fa1cccd822b786540adb35a0d141bc6bb4ef0665bcebda8ab75a781b34dab",
+          "C5_reconstructed": "62a4b9bd6ecbbd0d84db868306d21c844e69b646eab6331f784e5942aa70ef4d"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "8ce91d819014752dedd052c29a9b145bcc7e1c2d0338732f9e8e11f5f144be11",
+          "escape_bits": null,
+          "C4_coefficient_count": 0,
+          "C4_coefficients": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "C5_reconstructed": "8ce91d819014752dedd052c29a9b145bcc7e1c2d0338732f9e8e11f5f144be11"
+        }
+      ],
+      "C6_sharpened": "c98237777963d39eb94342dc23d54f201e22c6560e50765e482fbaf2fc0e3022",
+      "C7_raster": "c83a5cff1887fac94028dfb7883c99306ad97e51d085751d1d45c916fd12e6e4",
+      "C8_portrait": "e477875482a08688a15d2bc31e88ed2d80de56d9af717ecd61a3075fc801b811"
+    },
+    {
+      "index": 5,
+      "wi_length": 593,
+      "wi_sha256": "339ded9414fc5df5e2392ef2dd3ad703077e3c80b09c33064954a9354668754e",
+      "q": 162,
+      "ll_bits": 5,
+      "skip": 0,
+      "bytes_consumed": 593,
+      "C1_ll": "071b6f31bd206566b2bafdebb438a5a9623147813128193ce54374b8a55b1a8f",
+      "C2_map": "5e1630aada32de53f679941052d9defa6bcbe4f9a5ce4c523584622aad4ebbfe",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "eef4523b09d8786b1fe6ac598da47807075f692dcb013b1e95e392b512e97586",
+          "escape_bits": 5,
+          "C4_coefficient_count": 106,
+          "C4_coefficients": "2bcd27247809cd2021732f7623e787b5eecdb6c364c75383250cf20435dbca29",
+          "C5_reconstructed": "2cdd664821c277d43e3526cf8fc2098a34b78177e9d59cae213fd999324d1a15"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "72619cf014d3580909508c19115336a465d223ab386b60bcd9a79aad4cba8e8d",
+          "escape_bits": 4,
+          "C4_coefficient_count": 219,
+          "C4_coefficients": "c30b948c2e50ef33e500ed3daf5582f521c001213f156d5c5da493c389583624",
+          "C5_reconstructed": "a3bef8a2f27fcb178e74ded8d88dd4bba9c463a39375037e778f6f02ca8485c0"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "90cc00d1b9c83c4fc19ed33156145a04fbee87f365913e1828515517d3279af7",
+          "escape_bits": 3,
+          "C4_coefficient_count": 218,
+          "C4_coefficients": "04613b2bdf48af54a41385be0cf1c80342f3ba70b5c7c8ec4937b5966bda4034",
+          "C5_reconstructed": "54e2ca0670e3c2386f2f7cac0dab59a909b683bc37b493285b97ab1548d1f2e2"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "f2f3979d2235a7c6f66b3246ad9f8b0770c5a4ec06d7333cb0b0d100ad7bfc9f",
+          "escape_bits": 2,
+          "C4_coefficient_count": 109,
+          "C4_coefficients": "a41bd20fa4399904a8bc489a0d85eaa24099c573c4d49dc41c83b74147825640",
+          "C5_reconstructed": "0baa367b08c76dd925d9c05f65c53540ef55c4ade761c77530a7a8b7d4c850ef"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "ba2ae1ff4d68a065e632589b74d77b07ae3a638d1ff4d7e7b5311e1615b8f27a",
+          "escape_bits": 2,
+          "C4_coefficient_count": 2,
+          "C4_coefficients": "3066b0b63e5e80948399046514e0a59813b3255f908e4bfb417e91ef3b535a51",
+          "C5_reconstructed": "7e22d42b20308e63a6f9081e59ce8e2904a832506be4712ad903c00681d4875c"
+        }
+      ],
+      "C6_sharpened": "92d2f132919ff40eab404877257e72308b30acac4b069e398b66bcd501abfa32",
+      "C7_raster": "14575b68478f3ce7183b66f3e18a0a15a7de30ba54d10e8af8c45a30364a2def",
+      "C8_portrait": "63c9077ce4db835e54e6038060c5b989de10cf23ef969e7c61b600319c0d1ad8"
+    },
+    {
+      "index": 6,
+      "wi_length": 602,
+      "wi_sha256": "32d76b156e03f747c1afcebfa4f8b0c1a2a55f657c3088d1fc64f790478256a0",
+      "q": 169,
+      "ll_bits": 5,
+      "skip": 0,
+      "bytes_consumed": 602,
+      "C1_ll": "317c6e51b45b5a38a9611d82bdb2249752d7a089697f609221b69db238e6ac30",
+      "C2_map": "a32c5ad58c2239f9d6ee51f0ff528a43280a66c5d5e2957321dfbb3cc2b0e222",
+      "levels": [
+        {
+          "level": 4,
+          "C3_upsampled": "4eb92275ad5478ccb4504bbdbf0b52017787640daf770b15b9131b9895f40841",
+          "escape_bits": 5,
+          "C4_coefficient_count": 143,
+          "C4_coefficients": "e648a2721e6096099e64aec909667ff27a4a55c2b0bdbf78c600bef1da2b949b",
+          "C5_reconstructed": "a2ef9f3f4366694ea35576ef89d73dd56c6cd391db09baa6403f3ef074db3837"
+        },
+        {
+          "level": 3,
+          "C3_upsampled": "f4deed3430f089ea5e17c7255c423bea27b43930eb0a47c7c833382d6c543d96",
+          "escape_bits": 4,
+          "C4_coefficient_count": 248,
+          "C4_coefficients": "0a71ad25ac849fbb6017927ba70acea23cfa34c254858f01a4a7f6dd4b931910",
+          "C5_reconstructed": "317b8e8d4fc61f04223ef9de799cf180e963fc3dac87599662f1bbc30a41d600"
+        },
+        {
+          "level": 2,
+          "C3_upsampled": "8776102760a8e6aad054b75757470a97d7ec52f429de596ead98aeb8d61d5db6",
+          "escape_bits": 3,
+          "C4_coefficient_count": 223,
+          "C4_coefficients": "8f7fd5d4ac8786f802bc76ad1e41b59f30f06f28744159d3fcd3019ce5c50218",
+          "C5_reconstructed": "dfa454ae4b1f650e383e7449753df1869ef1430bf6a9327c4101ff611b776c9e"
+        },
+        {
+          "level": 1,
+          "C3_upsampled": "a4f156965c9ff98c4083796516531309222a26fc15cf50e5c84a98cecd741819",
+          "escape_bits": 2,
+          "C4_coefficient_count": 71,
+          "C4_coefficients": "d7f7d397f34eac4dd28e8f50674cf47dc20305ccae4e035750e95b41ee89d5cb",
+          "C5_reconstructed": "58ff046f718e050070ce699b077bf68e10a027e0d862f019b4cabbce354c6487"
+        },
+        {
+          "level": 0,
+          "C3_upsampled": "c908ab5d2c4f439923e9bc73ccd718d3f7bd3a16d415d46c944bdbadf1e27f2a",
+          "escape_bits": 2,
+          "C4_coefficient_count": 1,
+          "C4_coefficients": "1279dfa53db2ff4257faddaef5c1c653cce9648be517d7626621e45c2084fc9e",
+          "C5_reconstructed": "36968b7bc491a91fa2679978d9061cfee9fff171fc54f32284b294781c11698e"
+        }
+      ],
+      "C6_sharpened": "f5303d46eb2e5e4eb64978ec9dd082e2c4a3e4377d42e80fc80a3f484c5a8320",
+      "C7_raster": "c27b0396cfa711906eab6dd9c132c5acfc514e256ab6a3435f3346e9caea5a58",
+      "C8_portrait": "16a32853c13af21ff2cc034d18844f2982509d0c70cd495e717e1b45a755b579"
+    }
+  ]
+}

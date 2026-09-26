@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SA Licence Barcode</string>
+    <string name="prompt">Fill the box with the barcode on the back of the licence card, or on a temporary licence</string>
+    <string name="prompt_misread">Barcode found. Hold steady, fill the box, and tilt away from glare</string>
+    <string name="prompt_other">That barcode is not a driving licence</string>
+    <string name="prompt_checks_failed">Barcode read, but its details fail the checks: not accepted</string>
+    <string name="recognised">Licence recognised</string>
+    <string name="torch">Torch</string>
+    <string name="scan_again">Scan again</string>
+    <string name="camera_needed">The camera permission is needed to scan the barcode.</string>
+    <string name="privacy">Shown on screen only. Nothing is stored, logged or sent.</string>
+</resources>

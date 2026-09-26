@@ -1,0 +1,27 @@
+# Build output
+.gradle/
+build/
+.kotlin/
+local.properties
+*.apk
+*.aab
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Public test vectors, fetched by scripts/fetch-test-vectors.sh. They hold what
+# look like real people's details: never commit them.
+third_party/
+
+# Anything decoded while testing: never commit real barcode bytes or portraits.
+*.bin
+*.wi
+*.pgm
+*.png
+*.jpg
+*.jpeg
+out/
+__pycache__/
